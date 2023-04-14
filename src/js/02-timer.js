@@ -14,7 +14,6 @@ const refs = {
   timer: document.querySelector('.timer'),
   timerValue: document.querySelectorAll('.value'),
 };
-const timeForm = refs.dataTime
 const flatpickr = require('flatpickr');
 const setting = {
   enableTime: true,
@@ -41,7 +40,7 @@ const setting = {
     });
   },
 };
-flatpickr(timeForm, setting);
+
 refs.startBtn.addEventListener('click', getTimeChoisen);
 const choiseDateTime = flatpickr(refs.dataTime, setting);
 function getTimeChoisen() {
