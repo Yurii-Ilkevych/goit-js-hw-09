@@ -16,7 +16,7 @@ const refs = {
 };
 
 const flatpickr = require('flatpickr');
-const options = {
+const setting = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
@@ -42,7 +42,7 @@ const options = {
   },
 };
 
-const choiseDateTime = flatpickr(refs.dataTime, options);
+const choiseDateTime = flatpickr(refs.dataTime, setting);
 refs.startBtn.addEventListener('click', getTimeChoisen);
 
 function getTimeChoisen() {
