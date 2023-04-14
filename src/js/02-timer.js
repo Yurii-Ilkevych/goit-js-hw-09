@@ -42,31 +42,7 @@ const setting = {
 };
 
 refs.startBtn.addEventListener('click', getTimeChoisen);
-const choiseDateTime = flatpickr('#datetime-picker', {
-  enableTime: true,
-  time_24hr: true,
-  defaultDate: new Date(),
-  minuteIncrement: 1,
-  onClose(selectedDates) {
-    console.log(selectedDates[0]);
-    if (new Date().getTime() < selectedDates[0].getTime()) {
-      refs.startBtn.removeAttribute('disabled');
-      refs.startBtn.style.color = 'green';
-
-      return;
-    }
-    Notify.failure('Please choose a date in the future', {
-      position: 'center-top',
-      timeout: 2000,
-      fontSize: '18px',
-      distance: '150px',
-      borderRadius: '50px',
-      failure: {
-        textColor: '#000',
-      },
-    });
-  },
-});
+const choiseDateTime = flatpickr('#datetime-picker', setting);
 function getTimeChoisen() {
   const selectTime = choiseDateTime.latestSelectedDateObj.getTime();
   refs.startBtn.setAttribute('disabled', 'disabled');
