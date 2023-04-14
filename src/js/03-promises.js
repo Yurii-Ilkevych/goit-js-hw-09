@@ -33,8 +33,12 @@ function createPromise(position, delay) {
 function open(evt) {
   evt.preventDefault();
 
-  if(localStorage.getItem(STORAGE_KEY_DELAY) === null && localStorage.getItem(STORAGE_KEY_STEP) === null && localStorage.getItem(STORAGE_KEY_AMOUNT) === null){
-    Notify.warning("Всі поля форми повинні бути заповнені", {
+  if (
+    localStorage.getItem(STORAGE_KEY_DELAY) === null &&
+    localStorage.getItem(STORAGE_KEY_STEP) === null &&
+    localStorage.getItem(STORAGE_KEY_AMOUNT) === null
+  ) {
+    Notify.warning('Всі поля форми повинні бути заповнені', {
       position: 'center-top',
       timeout: 1250,
       fontSize: '20px',
@@ -44,18 +48,19 @@ function open(evt) {
         textColor: '#ааа',
       },
     });
-    return
+    return;
   }
- 
-   let delayTime = Number(JSON.parse(localStorage.getItem(STORAGE_KEY_DELAY)));
-   startId = setTimeout(start, Number(JSON.parse(localStorage.getItem(STORAGE_KEY_DELAY))), delayTime);
-   clearTextForm();
+
+  let delayTime = Number(JSON.parse(localStorage.getItem(STORAGE_KEY_DELAY)));
+  startId = setTimeout(
+    start,
+    Number(JSON.parse(localStorage.getItem(STORAGE_KEY_DELAY))),
+    delayTime
+  );
+  clearTextForm();
 }
 
-
-
 function start(delayTime) {
-  
   if (count < Number(JSON.parse(localStorage.getItem(STORAGE_KEY_AMOUNT)))) {
     count += 1;
     createPromise(count, delayTime)
@@ -90,9 +95,9 @@ function start(delayTime) {
     startId = setTimeout(start, delayTime, delayTime);
   } else {
     clearInterval(startId);
-    localStorage.removeItem(STORAGE_KEY_DELAY)
-    localStorage.removeItem(STORAGE_KEY_STEP)
-    localStorage.removeItem(STORAGE_KEY_AMOUNT)
+    localStorage.removeItem(STORAGE_KEY_DELAY);
+    localStorage.removeItem(STORAGE_KEY_STEP);
+    localStorage.removeItem(STORAGE_KEY_AMOUNT);
     count = 0;
     delayTime = 0;
   }
@@ -104,20 +109,22 @@ function clearTextForm() {
   refs.amount.value = '';
 }
 
-function getValueForm(event){
-  const {elements: {delay, step, amount}} = event.currentTarget;
+function getValueForm(event) {
+  const {
+    elements: { delay, step, amount },
+  } = event.currentTarget;
   const delayForm = delay.value;
   const stepForm = step.value;
   const amountForm = amount.value;
-if(delayForm !== "" && stepForm !== "" && amountForm !== "") {
-  localStorage.setItem(STORAGE_KEY_DELAY, JSON.stringify(delayForm));
-  localStorage.setItem(STORAGE_KEY_STEP, JSON.stringify(stepForm));
-  localStorage.setItem(STORAGE_KEY_AMOUNT, JSON.stringify(amountForm));
-}
+  if (delayForm !== '' && stepForm !== '' && amountForm !== '') {
+    localStorage.setItem(STORAGE_KEY_DELAY, JSON.stringify(delayForm));
+    localStorage.setItem(STORAGE_KEY_STEP, JSON.stringify(stepForm));
+    localStorage.setItem(STORAGE_KEY_AMOUNT, JSON.stringify(amountForm));
+  }
 }
 
 function reloadedPage() {
-  localStorage.removeItem(STORAGE_KEY_DELAY)
-  localStorage.removeItem(STORAGE_KEY_STEP)
-  localStorage.removeItem(STORAGE_KEY_AMOUNT)
+  localStorage.removeItem(STORAGE_KEY_DELAY);
+  localStorage.removeItem(STORAGE_KEY_STEP);
+  localStorage.removeItem(STORAGE_KEY_AMOUNT);
 }
