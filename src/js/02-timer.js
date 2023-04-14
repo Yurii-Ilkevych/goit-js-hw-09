@@ -41,7 +41,7 @@ const setting = {
     });
   },
 };
-
+flatpickr(refs.dataTime, setting);
 refs.startBtn.addEventListener('click', getTimeChoisen);
 
 function getTimeChoisen() {
