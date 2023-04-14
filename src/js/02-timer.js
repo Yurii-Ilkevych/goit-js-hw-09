@@ -41,17 +41,11 @@ const setting = {
     });
   },
 };
-
 const choiseDateTime = flatpickr(refs.dataTime, setting);
 refs.startBtn.addEventListener('click', getTimeChoisen);
 
 function getTimeChoisen() {
   const selectTime = choiseDateTime.latestSelectedDateObj.getTime();
-
-  if (new Date().getTime() > selectTime) {
-    return window.alert('Please choose a date in the future');
-  }
-
   refs.startBtn.setAttribute('disabled', 'disabled');
   refs.startBtn.style.color = 'red';
   startId = setInterval(startTime, 1000, selectTime);
