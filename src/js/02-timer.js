@@ -41,7 +41,7 @@ const setting = {
     });
   },
 };
-const choiseDateTime = flatpickr(refs.dataTime, setting);
+
 refs.startBtn.addEventListener('click', getTimeChoisen);
 
 function getTimeChoisen() {
@@ -114,3 +114,4 @@ refs.timerValue.forEach(function (element) {
   element.style.justifyContent = 'center';
   element.style.fontWeight = '700';
 });
+const choiseDateTime = flatpickr(refs.dataTime, setting);
