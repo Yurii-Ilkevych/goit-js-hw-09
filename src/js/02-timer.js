@@ -14,7 +14,7 @@ const refs = {
   timer: document.querySelector('.timer'),
   timerValue: document.querySelectorAll('.value'),
 };
-
+const timeForm = refs.dataTime
 const flatpickr = require('flatpickr');
 const setting = {
   enableTime: true,
@@ -41,9 +41,9 @@ const setting = {
     });
   },
 };
-flatpickr(refs.dataTime, setting);
+flatpickr(timeForm, setting);
 refs.startBtn.addEventListener('click', getTimeChoisen);
-
+const choiseDateTime = flatpickr(refs.dataTime, setting);
 function getTimeChoisen() {
   const selectTime = choiseDateTime.latestSelectedDateObj.getTime();
   refs.startBtn.setAttribute('disabled', 'disabled');
@@ -114,4 +114,3 @@ refs.timerValue.forEach(function (element) {
   element.style.justifyContent = 'center';
   element.style.fontWeight = '700';
 });
-const choiseDateTime = flatpickr(refs.dataTime, setting);
