@@ -14,7 +14,7 @@ const refs = {
   timer: document.querySelector('.timer'),
   timerValue: document.querySelectorAll('.value'),
 };
-const flatpickr = require('flatpickr');
+//const flatpickr = require('flatpickr');
 const setting = {
   enableTime: true,
   time_24hr: true,
