@@ -42,7 +42,7 @@ const setting = {
 };
 
 refs.startBtn.addEventListener('click', getTimeChoisen);
-const choiseDateTime = flatpickr('#datetime-picker', setting);
+flatpickr('#datetime-picker', setting);
 function getTimeChoisen() {
   const selectTime = choiseDateTime.latestSelectedDateObj.getTime();
   refs.startBtn.setAttribute('disabled', 'disabled');
