@@ -60,6 +60,11 @@ function open(evt) {
   clearTextForm();
 }
 
+
+
+
+
+
 function start(delayTime) {
   if (count < Number(JSON.parse(localStorage.getItem(STORAGE_KEY_AMOUNT)))) {
     count += 1;
@@ -92,7 +97,7 @@ function start(delayTime) {
       });
     delayTime += Number(JSON.parse(localStorage.getItem(STORAGE_KEY_STEP)));
 
-    startId = setTimeout(start, delayTime, delayTime);
+    startId = setTimeout(start, Number(JSON.parse(localStorage.getItem(STORAGE_KEY_STEP))), delayTime);
   } else {
     clearInterval(startId);
     localStorage.removeItem(STORAGE_KEY_DELAY);
